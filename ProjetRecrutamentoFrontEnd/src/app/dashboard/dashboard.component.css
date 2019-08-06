@@ -1,0 +1,17 @@
+.logout {
+    float: right;
+    color: red;
+    font-size: .9em;
+    padding: .8px;
+    font-weight: bold;
+}
+
+ul{
+   list-style: none;
+    cursor:  pointer;
+}
+
+li:hover {
+    color:blue;
+    
+}

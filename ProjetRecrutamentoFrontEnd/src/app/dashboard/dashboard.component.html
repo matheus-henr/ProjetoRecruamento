@@ -1,0 +1,115 @@
+<div class="logout">
+  <ul>
+    <li (click)=logout()>Logout</li>
+  </ul>
+</div>
+
+<div class="alert alert-success" *ngIf="messagenHidden === true">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Success!</strong>
+</div>
+
+
+<form [formGroup]="form" class="main-form container" *ngIf="formHiden === false">
+
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label>Name</label>
+      <input type="text" class="form-control" formControlName="name">
+    </div>
+
+
+    <div class="form-group col-md-6">
+      <label>ParentJob</label>
+      <select class="form-control" formControlName="parentJob">
+        <option *ngFor="let j of jobs" value="{{j.id}}">{{j.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label>active
+        <input type="radio" value="true" formControlName="active">
+      </label>
+    </div>
+
+  </div>
+  <div formGroupName="task" class="task row">
+    <h3 class="col-md-12">Task</h3>
+    <div class="form-group col-md-6">
+      <label>Name</label>
+      <input type="text" class="form-control" formControlName="name">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label>weight</label>
+      <input type="number" class="form-control" formControlName="weight">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label>CreatedAt</label>
+      <input type="date" class="form-control" value="true" formControlName="createdAt">
+    </div>
+    <div class="form-group col-md-12">
+      <label>completed
+        <input type="radio" value="true" formControlName="completed">
+      </label>
+    </div>
+    <div class="col-md-12">
+      <input type="button" class="btn btn-primary" value="ADD Task" (click)="addTask()">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label>Task</label>
+      <select multiple class="form-control" disabled>
+        <option *ngFor="let item of task">{{item.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <input type="button" class="btn btn-primary" value="Adicionar" (click)="save()" [disabled]="!form.valid">
+    <input type="button" class="btn btn-primary" value="Cancelar" (click)="closeForm()">
+  </div>
+</form>
+
+
+<section class="main-table">
+
+
+  <div class="container" *ngIf="formHiden === true">
+    <h2>Table of Jobs</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let j of jobs">
+          <td>{{j.id}}</td>
+          <td>{{j.name}}</td>
+          <td>
+            <div>
+              <button class="btn btn-danger" (click)="delete(j.id)">
+                <i class="fas fa-trash" aria-hidden="true"></i>
+              </button>
+
+              <button class="btn btn-secondary" (click)="update(j)">
+                <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+              </button>
+
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <input type="button" class="btn btn-primary" value="New Job" (click)="openForm()">
+    </div>
+  </div>
+
+</section>
