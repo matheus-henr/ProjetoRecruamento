@@ -1,0 +1,38 @@
+<!--
+  Generated template for the DashboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Dashboard</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-fab top right edge>
+        <button ion-fab mini><ion-icon name="repeat" (click)="findAll()"></ion-icon></button>
+    </ion-fab>  
+  <ion-list>
+    <ion-item-sliding *ngFor="let job of jobs" >
+      <ion-item >
+        {{job.name}}
+      </ion-item>
+      <ion-item-options side="left">
+          <button ion-button color="primary">
+            <ion-icon name="create" (click)="update(job)"></ion-icon>
+            Editar
+          </button>
+          <button ion-button color="secondary" (click)="delete(job.id)">
+            <ion-icon name="trash"></ion-icon>
+            Deletar
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="openForm()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

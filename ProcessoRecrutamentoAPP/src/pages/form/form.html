@@ -1,0 +1,81 @@
+<!--
+  Generated template for the FormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list inset >
+    <form [formGroup]="form">
+      <ion-item>
+        <ion-label>name</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item> 
+
+      <ion-item>
+      <ion-label>ParentJob</ion-label>
+      <ion-select  formControlName="parentJob">
+        <ion-option *ngFor="let job of jobs" value="{{job.id}}">{{job.name}}</ion-option>
+      </ion-select>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Active</ion-label>
+          <ion-toggle  checked="false" formControlName="active"></ion-toggle>
+        </ion-item>
+
+      <ion-list >
+        <div formGroupName="task">
+            <ion-list-header>
+                Task
+              </ion-list-header>
+          <ion-item>
+              <ion-label>Name</ion-label>
+              <ion-input type="text" formControlName="name"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label>Weight</ion-label>
+              <ion-input type="number" formControlName="weight"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label>completed</ion-label>
+              <ion-toggle  checked="false" formControlName="completed"></ion-toggle>
+          </ion-item>
+
+          <ion-item>
+              <ion-label>CreatedAt</ion-label>
+              <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="MMM DD, YYYY" formControlName="createdAt"></ion-datetime>
+          </ion-item>
+
+         
+
+          <button ion-button color="secondary" (click)="addTask()">ADD</button>
+        </div>
+      </ion-list>
+    
+      
+
+      <ion-card>
+
+      <ion-card-header>
+        Tasks
+      </ion-card-header>
+    
+      <ion-card-content>
+          <ion-label *ngFor="let t of task">{{t.name}}</ion-label>
+      </ion-card-content>
+
+      </ion-card>
+
+      <button ion-button color="secondary" (click)="save()" [disabled]="!form.valid">Save</button>
+  </form>
+ </ion-list>  
+</ion-content>

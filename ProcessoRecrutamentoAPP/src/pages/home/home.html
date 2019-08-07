@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+<form [formGroup]="form">
+  <ion-item>
+    <ion-label fixed>Username</ion-label>
+    <ion-input type="text" value="" formControlName="user"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>Password</ion-label>
+    <ion-input type="password" formControlName="password"></ion-input>
+  </ion-item>
+  <button ion-button (click)="sing()">Sing-in</button>
+</form>
+</ion-list>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "ProcessoRecrutamentoAPP",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
